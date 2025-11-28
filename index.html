@@ -1,0 +1,48 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩸 BLOODY HIGHWAY HORROR 🩸</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <div class="ui-panel">
+      <h1>🩸 BLOODY HIGHWAY 🩸</h1>
+      <div class="stats">
+        <div>Level: <span id="level">1</span></div>
+        <div>Score: <span id="score">0</span></div>
+        <div>Speed: <span id="speed">Slow</span></div>
+      </div>
+      <div class="controls">
+        ← → Change Lane | ↑ ↓ Change Speed
+      </div>
+    </div>
+    
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+    
+    <div id="gameOver" class="hidden">
+      <h2>💀 YOUR SOUL IS TAKEN 💀</h2>
+      <p>Final Score: <span id="finalScore">0</span></p>
+      <button id="restart">RESURRECT</button>
+    </div>
+
+    <!-- Background Music -->
+    
+    <audio id="bgMusic" autoplay loop>
+  <source src="rick-trager-chase-theme.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+    <audio id="bgMusic" loop>
+      <source src="https://www.youtube.com/watch?v=P6Z_r8yi_Yc" type="audio/mpeg">
+    </audio>
+    <audio id="crashSound">
+      <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcAg2bNu9t1o4QJHfJ4vJciUFLIHO8tiJNwgZaLvt559NE" type="audio/wav">
+    </audio>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
